@@ -14,15 +14,11 @@
       </div>
     @endif
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
+                <div class="panel panel-default">
                 <div class="panel-body">
                     {!! Former::text('upc')
                         ->label(trans("pointofsale::texts.upc")) !!}
                 </div>
-            </div>
-        </div>
     </div>
 
     <center class="buttons">
