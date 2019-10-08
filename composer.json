@@ -1,0 +1,15 @@
+{
+    "name": "invoiceninja/pointofsale",
+    "description": "",
+    "authors": [
+        {
+            "name": "Christopher Di Carlo",
+            "email": "info@dicarlosystems.ca"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\PointOfSale\\": ""
+        }
+    }
+}
