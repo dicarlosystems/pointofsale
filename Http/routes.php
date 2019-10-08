@@ -11,3 +11,11 @@ Route::group(['middleware' => 'api', 'namespace' => 'Modules\PointOfSale\Http\Ap
 {
     Route::resource('pointofsale', 'PointOfSaleApiController');
 });
+
+Route::group(['middleware' => ['web', 'lookup:user', 'auth:user'], 'namespace' => 'Modules\PointOfSale\Http\Controllers'], function()
+{
+    Route::get('settings/pointofsale', function() {
+            return view('pointofsale::settings');
+    });
+    Route::post('settings/pointofsale', 'PointOfSaleController@saveSettings');
+});
