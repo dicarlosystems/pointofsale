@@ -42,7 +42,7 @@ class PointofsaleApiController extends BaseAPIController
      */
     public function productsByBarcode(Request $request)
     {
-        $products = Product::whereHas('manufacturerProductDetails', function($query) use($request) {
+        $products = Product::with('manufacturerProductDetails')->whereHas('manufacturerProductDetails', function($query) use($request) {
             $query->where('upc', '=', $request->get('barcode'));
         })->get();
 

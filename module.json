@@ -13,5 +13,6 @@
         "start.php"
     ],
     "icon": "shopping-cart",
-    "plural": "pointofsale"
+    "plural": "pointofsale",
+    "no-sidebar": 1
 }
