@@ -1,1 +1,3 @@
-# pos-invoiceninja
+#Point Of Sale module for Invoice Ninja
+
+
