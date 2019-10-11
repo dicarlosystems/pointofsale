@@ -35,6 +35,12 @@ class PointOfSaleServiceProvider extends AuthServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+
+        // register the commands to inject/eject the view
+        $this->commands([
+            \Modules\PointOfSale\Console\InjectScannerCommand::class,
+            \Modules\PointOfSale\Console\EjectScannerCommand::class,
+        ]);
     }
 
     /**
