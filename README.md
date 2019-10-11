@@ -7,6 +7,9 @@ This module adds the ability to use a barcode scanner to scan items into an invo
 - Automatically increments the quantity if the item already exists and the invoice line item has not been modified
 - Does not interfere with traditional invoice item entry
 
+## Dependencies
+This module requires the [Manufacturer](https://github.com/dicarlosystems/manufacturer) module to function.  Please install and run the migrations first!
+
 ## Installation
 Install the module like any other Invoice Ninja module:
 
