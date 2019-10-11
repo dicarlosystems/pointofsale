@@ -66,48 +66,46 @@
                 if(responseData) {
                     var notes = responseData.notes;
                     var productKey = responseData.product_key;
-                    var cost = responseData.cost;
+                    var cost = roundSignificant(responseData.cost, true);
                 
                     var message = '<div class="pointofsale_scan_info text-center alert alert-success">';
                         message += 'Added ' + barcode + '</div>';
 
-                    if(invoice.invoice_items_without_tasks().length == 1) {
-                        // the list is empty, replace the first row and add a new one
-                        itemModel = new ItemModel();
-                        itemModel.product_key(productKey);
-                        itemModel.notes(notes);
-                        itemModel.cost(cost);
-                        itemModel.qty(1);
+                    existingItem = ko.utils.arrayFirst(invoice.invoice_items_without_tasks(), function(im) {
+                        return (im.product_key() == productKey && im.notes() == notes && im.cost() == cost);
+                        
+                    });
+
+                    if(existingItem) {
+                        existingItem.qty(existingItem.qty()+1);
+                    } else {
+                        replacementItem = new ItemModel();
+                        replacementItem.product_key(productKey);
+                        replacementItem.notes(notes);
+                        replacementItem.cost(cost);
+                        replacementItem.qty(1);
 
                         // get the empty entry row itemModel
-                        i = ko.utils.arrayFirst(invoice.invoice_items_without_tasks(), function(im) {
+                        entryItem = ko.utils.arrayFirst(invoice.invoice_items_without_tasks(), function(im) {
                             var retval = im.product_key() == "" && im.notes() == "" && im.cost() == 0 && im.qty() == 0;
                             return retval;
                         });
 
-                        invoice.invoice_items_without_tasks.replace(i, itemModel);
-                        invoice.addItem(false);
-                    } else {
-                        i = ko.utils.arrayFirst(invoice.invoice_items_without_tasks(), function(im) {
-                            var retval = im.product_key() == productKey && im.notes() == notes && im.cost() == cost;
-                            return retval;
-                        });
-
-                        if(i) {
-                            // found a row with the same data, just increment the quantity
-                            var num = i.qty();
-                            i.qty(++num);
+                        if(entryItem) {
+                            // found the row
+                            invoice.invoice_items_without_tasks.replace(entryItem, replacementItem);
+                            invoice.addItem(false);
                         } else {
+                            // couldn't find the empty row so add a new one, update it, and then add another new
+                            // row for further items
                             itemModel = invoice.addItem(false);
-                            itemModel.product_key(productKey);
-                            itemModel.notes(notes);
-                            itemModel.cost(cost);
-                            itemModel.qty(1);
+                            invoice.invoice_items_without_tasks.replace(itemModel, replacementItem);
                             invoice.addItem(false);
                         }
                     }
 
                     invoice.invoice_items_without_tasks.valueHasMutated();
+                    refreshPDF(true);
                 } else {
                     var message = '<div class="pointofsale_scan_info text-center alert alert-danger" style="margin-top: 6px;">';
                         message += barcode + ' not found!</div>';
