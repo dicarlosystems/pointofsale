@@ -11,7 +11,7 @@ This module adds the ability to use a barcode scanner to scan items into an invo
 Install the module like any other Invoice Ninja module:
 
 ```
-php artisan module:install dicarlosystems/pointofsale-invoiceninja --type=github
+php artisan module:install dicarlosystems/pointofsale --type=github
 ```
 
 After the installation is complete, you must run the Artisan command to inject the view into the relevant Invoice Ninja views:
