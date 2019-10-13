@@ -50,6 +50,9 @@ class InjectScannerCommand extends Command
                 array_pop($lines);
                 array_push($lines, $include . "@stop");
                 file_put_contents($editInvoiceView, $lines);
+                $this->info("Injected scanner into invoice view(s).");
+            } else {
+                $this->info("Scanner already injected, no changes necessary.");
             }
         }
     }

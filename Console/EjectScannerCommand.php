@@ -44,19 +44,11 @@ class EjectScannerCommand extends Command
 
         $contents = file_get_contents($editInvoiceView);
 
-        
-        //$lines = file($editInvoiceView);
         $include = "@include('pointofsale::invoices.edit')@stop";
         $contents = str_replace($include, '@stop', $contents);
-        //$numberOfLines = count($lines);
 
-        // for($i = 0; $i < $numberOfLines; $i++) {
-        //     if($lines[$i] == $include) {
-        //         unset($lines[$i]);
-        //     }
-        // }
-
-        // dump($lines);
         file_put_contents($editInvoiceView, $contents);
+
+        $this->info("Removed scanner from invoice view(s).");
     }
 }
