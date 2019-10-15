@@ -5,6 +5,8 @@ This module adds the ability to use a barcode scanner to scan items into an invo
 ## Features
 - Scanner dialog can be triggered manually using the button on the Invoices / Create or Invoices / Edit pages
 - Automatically increments the quantity if the item already exists and the invoice line item has not been modified
+- Updates all relevant product fields
+- Allows documneting of serial number for serialized items
 - Does not interfere with traditional invoice item entry
 
 ## Dependencies
