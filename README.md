@@ -16,7 +16,7 @@ This module requires the [Manufacturer](https://github.com/dicarlosystems/manufa
 Install the module like any other Invoice Ninja module:
 
 ```
-php artisan module:install dicarlosystems/pointofsale --type=github
+php artisan module:install dicarlosystems/pointofsale --type=github-https
 ```
 
 After the installation is complete, you must run the Artisan command to inject the view into the relevant Invoice Ninja views:
