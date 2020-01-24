@@ -41,12 +41,12 @@ class InjectScannerCommand extends Command
     {
         // add the scanner include to the invoices/edit.blade.php file
         $editInvoiceView = base_path('resources/views/invoices/edit.blade.php');
-        
-        $lines = file($editInvoiceView);
-        $include = "@include('pointofsale::invoices.edit')";
 
-        if($lines) {
-            if(!in_array($include, $lines, false)) {
+        $lines = file($editInvoiceView);
+        $include = "@includeWhen(\Request::is('invoices/*'), 'pointofsale::invoices.edit')";
+
+        if ($lines) {
+            if (!in_array($include, $lines, false)) {
                 array_pop($lines);
                 array_push($lines, $include . "@stop");
                 file_put_contents($editInvoiceView, $lines);

@@ -61,10 +61,11 @@ class PointOfSaleServiceProvider extends AuthServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('pointofsale.php'),
+            __DIR__ . '/../Config/config.php' => config_path('pointofsale.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'pointofsale'
+            __DIR__ . '/../Config/config.php',
+            'pointofsale'
         );
     }
 
@@ -77,7 +78,7 @@ class PointOfSaleServiceProvider extends AuthServiceProvider
     {
         $viewPath = base_path('resources/views/modules/pointofsale');
 
-        $sourcePath = __DIR__.'/../Resources/views';
+        $sourcePath = __DIR__ . '/../Resources/views';
 
         $this->publishes([
             $sourcePath => $viewPath
@@ -100,7 +101,7 @@ class PointOfSaleServiceProvider extends AuthServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'pointofsale');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang/en', 'pointofsale');
+            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang/en', 'pointofsale');
         }
     }
 

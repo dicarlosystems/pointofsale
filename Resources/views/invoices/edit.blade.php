@@ -1,5 +1,6 @@
 <div id="pointofsale" style="margin-bottom: 16px;" class="text-center">
-    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#pointofsale_scanner"><i style="display:block" class="fa fa-barcode fa-3x"></i> Begin Scanning</a>
+    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#pointofsale_scanner"><i style="display:block"
+            class="fa fa-barcode fa-3x"></i> Begin Scanning</a>
 </div>
 
 <!-- Scanner modal -->
@@ -7,11 +8,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="scannerModalLabel">Point Of Sale Scanning</h4>
             </div>
             <div class="modal-body">
-                {!! Former::text('pointofsale_barcode')->label('')->addClass('form-control text-center')->placeholder('Barcode') !!}
+                {!! Former::text('pointofsale_barcode')->label('')->addClass('form-control
+                text-center')->placeholder('Barcode') !!}
             </div>
         </div>
     </div>
@@ -22,11 +25,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="serialModalLabel">Serial Number</h4>
             </div>
             <div class="modal-body">
-                {!! Former::text('pointofsale_serial')->label('')->addClass('form-control text-center')->placeholder('Serial Number') !!}
+                {!! Former::text('pointofsale_serial')->label('')->addClass('form-control
+                text-center')->placeholder('Serial Number') !!}
             </div>
         </div>
     </div>
@@ -72,7 +77,8 @@
 
             data.serial_number = $("#pointofsale_serial").val();
             addScannedItem(data);
-            $("#pointofsale_serial").modal('hide');
+            $("#pointofsale_serial_scanner").modal('hide');
+            $('#pointofsale_scanner').modal('show');
         }
     });
 

@@ -44,7 +44,7 @@ class EjectScannerCommand extends Command
 
         $contents = file_get_contents($editInvoiceView);
 
-        $include = "@include('pointofsale::invoices.edit')@stop";
+        $include = "@includeWhen(\Request::is('invoices/*'), 'pointofsale::invoices.edit'))@stop";
         $contents = str_replace($include, '@stop', $contents);
 
         file_put_contents($editInvoiceView, $contents);
