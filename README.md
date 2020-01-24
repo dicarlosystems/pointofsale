@@ -12,6 +12,11 @@ This module adds the ability to use a barcode scanner to scan items into an invo
 ## Dependencies
 This module requires the [Manufacturer](https://github.com/dicarlosystems/manufacturer) module to function.  Please install and run the migrations first!
 
+## Updating Invoice Ninja
+Depending on how Invoice Ninja was installed, you may need to perform additional steps:
+- if installed from the downloaded zip, you will have to re-run the artisan command to inject the scanner
+- if the source was cloned, eject the scanner before pulling the recent changes; otherwise you will get a conflict on the invoices view.  After the clone is complete you can re-inject the scanner as usual.
+
 ## Installation
 Install the module like any other Invoice Ninja module:
 
@@ -30,7 +35,7 @@ php artisan pointofsale:eject-scanner
 ```
 
 ## Issues / Feedback
-This module is very new and all feedback or issues are welcome!  Feel free to open an issue for any bugs or feature requests.
+All feedback or issues are welcome!  Feel free to open an issue for any bugs or feature requests.
 
 ## Screenshots
 
